@@ -56,6 +56,10 @@ if (version_compare($wp_version, '2.8', '>=')) {
                                 $url = 'http://' . $url;
                             }
                             $text = stripslashes($x['text']);
+                            if ( isset( $data['limit_chars'] ) ) {
+                                $text = explode( "\n", wordwrap( $text, $data['limit_chars'] ) );
+                                $text = $text[0];
+                            }
 
                             echo '<div class="testimonials_manager_widget"><blockquote>';
                             if ($x['avatar']) {
