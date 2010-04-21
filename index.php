@@ -84,7 +84,12 @@ EOF;
                 }
             }
             $result .= stripslashes(nl2br($data['data'][$x]['text']));
-            $result .= '<br /><br /><strong>' . stripslashes($data['data'][$x]['name']) . '</strong><br />';
+
+            $result .= '<cite>' . stripslashes($data['data'][$x]['name']);
+                if ( $data['data'][$x]['title'] ) { $result .= ', ' . stripslashes($data['data'][$x]['title']); }
+                if ( $data['data'][$x]['company_name'] ) { $result .= '<em>' . stripslashes($data['data'][$x]['company_name']) . '</em>'; }
+            $result .= '</cite>';
+            
             if ($data['data'][$x]['url']) {
                 $result .= '<a href="' . stripslashes($url) . '">';
             }
